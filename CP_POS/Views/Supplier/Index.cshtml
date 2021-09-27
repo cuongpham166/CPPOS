@@ -1,0 +1,177 @@
+﻿@model IEnumerable<CP_POS.Models.SupplierModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="topsection">
+    <div class="topsection_container">
+        <div class="section_text">
+            <h3 class="section_title">List of Suppliers</h3>
+            <h6 class="section_subtitle">Inventory Management</h6>
+        </div>
+        <div class="section_button">
+            <button type="button" onclick="location.href='@Url.Action("Create", "Supplier")'">
+                <span class="create_icon">
+                    <i class="fas fa-plus"></i>
+                </span>
+                <span class="create_text">Add new supplier</span>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="mainsection">
+    <div class="mainsection_container">
+        <div class="mainsection_toolbar">
+            <div class="search_container">
+                <div class="toolbar_search">
+                    <div class="input_container">
+                        <input class="search_input" type="text" placeholder="Search....." name="SearchString"/>
+                    </div>
+                    <div class="search_icon">
+                        <button type="submit" class="search_button" value="Search">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="toolbar_button">
+                <div class="button_container">
+                    <div class="button_export">
+                        <span class="button_icon">
+                            <i class="fas fa-print"></i>
+                        </span>
+                        <span class="button_text">Export</span>
+                    </div>
+                    <div class="export_list">
+                        <div class="export_item" data-export-file="CSV">
+                            <span class="export_icon"><i class="fas fa-file-csv fa-fw"></i> </span>
+                            <span class="export_text">Export to CSV</span>
+                        </div>
+                        <div class="export_item" data-export-file="Excel">
+                            <span class="export_icon"><i class="fas fa-file-excel fa-fw"></i></span>
+                            <span class="export_text">Export to Excel</span>
+                        </div>
+                        <div class="export_item" data-export-file="Json">
+                            <span class="export_icon"><i class="fas fa-file-alt fa-fw"></i></span>
+                            <span class="export_text">Export to JSON</span>
+                        </div>
+                        @*<div class="export_item" data-export-file="Pdf">
+                            <span class="export_icon"><i class="fas fa-file-pdf fa-fw"></i></span>
+                            <span class="export_text">Export to PDF</span>
+                        </div>*@
+                        <div class="export_item" data-export-file="Txt">
+                            <span class="export_icon"><i class="fas fa-file-pdf fa-fw"></i></span>
+                            <span class="export_text">Export to TXT</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="button_container">
+                    <div class="button_setting">
+                        <span class="button_icon">
+                            <i class="fas fa-columns"></i>
+                        </span>
+                        <span class="button_text">Columns</span>
+                    </div>
+                    <div class="settings_list">
+                        <div class="settings_column">
+                            <div class="columnsettings_list"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="button_container">
+                    <div class="button_filter">
+                        <span class="button_icon">
+                            <i class="fas fa-filter"></i>
+                        </span>
+                        <span class="button_text">Filter</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mainsection_table">
+            <table class="table" id="dataTable">
+                <thead class="table_header">
+                    <tr class="header_row">
+                        <th class="header_cell name_cell" data-sort="asc" data-column-name="Name">
+                            <span class="header_text"> @Html.DisplayNameFor(model => model.Name)</span>
+                            <span class="header_sort"><i class="fas fa-sort-up sort_icon"></i></span>
+                        </th>
+                        <th class="header_cell phone_cell" data-sort="default" data-column-name="Phone">
+                            <span class="header_text"> @Html.DisplayNameFor(model => model.Phone)</span>
+                            <span class="header_sort"><i class="fas sort_icon"></i></span>
+                        </th>
+                        <th class="header_cell email_cell" data-sort="default" data-column-name="Email">
+                            <span class="header_text">@Html.DisplayNameFor(model => model.Email)</span>
+                            <span class="header_sort"><i class="fas sort_icon"></i></span>
+                        </th>
+                        <th class="header_cell number_cell" data-sort="default" data-column-name="Number">
+                            <span class="header_text">@Html.DisplayNameFor(model => model.Number)</span>
+                            <span class="header_sort"><i class="fas sort_icon"></i></span>
+                        </th>
+                        <th class="header_cell street_cell" data-sort="default" data-column-name="Street">
+                            <span class="header_text">@Html.DisplayNameFor(model => model.Street)</span>
+                            <span class="header_sort"><i class="fas sort_icon"></i></span>
+                        </th>
+                        <th class="header_cell postcode_cell" data-sort="default" data-column-name="Postcode">
+                            <span class="header_text">@Html.DisplayNameFor(model => model.Postcode)</span>
+                            <span class="header_sort"><i class="fas sort_icon"></i></span>
+                        </th>
+                        <th class="header_cell city_cell" data-sort="default" data-column-name="City">
+                            <span class="header_text">@Html.DisplayNameFor(model => model.City)</span>
+                            <span class="header_sort"><i class="fas sort_icon"></i></span>
+                        </th>
+                        <th class="header_cell state_cell" data-sort="default" data-column-name="State">
+                            <span class="header_text"> @Html.DisplayNameFor(model => model.State)</span>
+                            <span class="header_sort"><i class="fas sort_icon"></i></span>
+                        </th>
+                        <th class="header_cell action_cell">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="table_body">
+                    @foreach (var item in Model)
+                    {
+                    <tr class="body_row">
+                        <td class="body_cell name_cell">@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td class="body_cell phone_cell">@Html.DisplayFor(modelItem => item.Phone)</td>
+                        <td class="body_cell email_cell">@Html.DisplayFor(modelItem => item.Email)</td>
+                        <td class="body_cell number_cell">@Html.DisplayFor(modelItem => item.Number)</td>
+                        <td class="body_cell street_cell">@Html.DisplayFor(modelItem => item.Street)</td>
+                        <td class="body_cell postcode_cell">@Html.DisplayFor(modelItem => item.Postcode)</td>
+                        <td class="body_cell city_cell">@Html.DisplayFor(modelItem => item.City)</td>
+                        <td class="body_cell state_cell">@Html.DisplayFor(modelItem => item.State)</td>
+                        <td class="body_actioncell action_cell">
+                            <div class="action_icon">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </div>
+                            <div class="action_menu">
+                                <a class="action_link" asp-action="Edit" asp-route-id="@item.Id">
+                                    <span class="menu_icon"><i class="fas fa-pencil-alt fa-fw"></i></span>
+                                    <span class="menu_text">Edit</span>
+                                </a>
+                                <a class="action_link" asp-action="Delete" asp-route-id="@item.Id">
+                                    <span class="menu_icon"><i class="fas fa-trash fa-fw"></i></span>
+                                    <span class="menu_text">Delete</span>
+                                </a>
+                                <a class="action_link" asp-action="Details" asp-route-id="@item.Id">
+                                    <span class="menu_icon"><i class="fas fa-info fa-fw"></i></span>
+                                    <span class="menu_text">Details</span>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="table_footer">
+                <div class="footer_paging"></div>
+                <div class="footer_number"></div>
+            </div>
+        </div>
+    </div>
+</div>
+

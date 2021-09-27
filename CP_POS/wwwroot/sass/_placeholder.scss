@@ -1,0 +1,40 @@
+﻿@import "_variable.scss";
+@import "_mixins.scss";
+@import "_responsive.scss";
+
+%toolbarbutton_container {
+    padding: $secondary-button-padding;
+    background: $primary-bg-color-light;
+    border-radius: $border-radius;
+    color: $primary-title-color-light;
+    @include center-element-flexbox(center,center);
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    .button_icon {
+        margin-right: 10px;
+    }
+}
+
+%toolbar_list {
+    z-index: 9999;
+    position: absolute;
+    background: $secondary-bg-color-light;
+    color: $primary-text-color-light;
+    border-radius: $border-radius;
+    margin-top: 5px;
+}
+
+%table_cell {
+    border: none;
+    vertical-align: middle;
+    padding: 16px;
+}
+
+

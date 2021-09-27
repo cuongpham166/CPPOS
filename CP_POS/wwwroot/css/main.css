@@ -1,0 +1,20 @@
+﻿/*Light Theme*/
+/*when horver*/
+/*Create Button*/
+/*Buttons in Table*/
+body {
+  font-family: 'Roboto', sans-serif;
+  background: #F3EEFC; }
+
+*:focus {
+  outline: 0 !important; }
+
+*:hover {
+  border: none; }
+
+button {
+  outline: none !important;
+  border: none !important; }
+
+input {
+  border: none !important; }

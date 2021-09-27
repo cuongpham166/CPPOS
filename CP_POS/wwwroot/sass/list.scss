@@ -1,0 +1,266 @@
+﻿@import "_variable.scss";
+@import "_mixins.scss";
+@import "_responsive.scss";
+@import "_placeholder.scss";
+
+/*temp*/
+
+.settings_list {
+    @extend %toolbar_list;
+    display: none;
+    padding: 10px 15px;
+    min-width: 100%;
+
+    .columnsettings_element {
+        @include center-element-flexbox(flex-start,center);
+        margin-bottom: 10px;
+
+        .columnsettings_checkbox {
+            margin-right: 10px;
+
+            &:hover {
+                cursor:pointer;
+            }
+        }
+
+        .columnsettings_label {
+            text-transform: capitalize;
+            margin-bottom: 0;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.header_sort {
+    float: right;
+}
+
+.action_icon {
+    position: relative;
+}
+
+.action_menu {
+    display: flex;
+    flex-direction: column;
+    background: $secondary-bg-color-light;
+    border-radius: $border-radius;
+    margin-top: 5px;
+    position: absolute;
+    display: none;
+    z-index: 99999;
+
+    .action_link {
+        color: $primary-text-color-light;
+        padding: 10px;
+        text-decoration: none;
+
+        .menu_icon {
+            margin-right: 5px;
+        }
+    }
+}
+/*temp*/
+
+
+
+.topsection {
+    background: $primary-bg-color-light;
+    margin: 20px 0;
+
+    .topsection_container {
+        @include center-element-flexbox(space-between,center);
+
+        .section_text {
+            color: $primary-title-color-light;
+            margin-bottom: 0;
+
+            .section_title {
+                font-weight: bold;
+            }
+        }
+
+        .section_button {
+            button {
+                border-radius: $border-radius;
+                color: $primary-navtext-color-light;
+
+                .create_icon {
+                    padding: $primary-button-padding;
+                    background: $sucess-icon-color-light;
+                    border-radius: $border-radius 0 0 $border-radius;
+                }
+
+                .create_text {
+                    padding: $primary-button-padding;
+                    background: $success-button-color-light;
+                    border-radius: 0 $border-radius $border-radius 0;
+                }
+            }
+        }
+    }
+}
+
+.mainsection {
+    background: $third-bg-color-light;
+    border-radius: 20px;
+    padding: 30px 20px;
+
+    .mainsection_toolbar {
+        @include center-element-flexbox(space-between,center);
+        margin-bottom: 20px;
+
+        .search_container {
+            @include center-element-flexbox(center,center);
+
+            .toolbar_search {
+                @include center-element-flexbox(space-between,center);
+                background: $primary-bg-color-light;
+                border-radius: $border-radius;
+
+                .search_input {
+                    background: $search-input-color-light;
+                    @include placeholder-color ($primary-title-color-light);
+                    padding: $secondary-button-padding;
+                    border-radius: $border-radius;
+                }
+
+                .search_icon {
+                    button.search_button {
+                        padding: $secondary-button-padding;
+                        background: $search-icon-color-light;
+                        border-radius: 0 $border-radius $border-radius 0;
+                    }
+                }
+            }
+
+            .search_reset {
+                padding: $secondary-button-padding;
+                border-radius: $border-radius;
+                background: $primary-bg-color-light;
+                margin-left: 10px;
+
+                .reset_icon {
+                    color: $primary-title-color-light;
+                }
+            }
+        }
+
+        .toolbar_button {
+            @include center-element-flexbox(space-between,center);
+
+            .button_container {
+                position: relative;
+                display: inline-block;
+                margin-right: 10px;
+                width: 120px;
+                &:last-child {
+                    margin-right: 0;
+                }
+
+                .export_list {
+                    @extend %toolbar_list;
+                    display: none;
+                    min-width: 170px;
+
+                    .export_item {
+                        @include center-element-flexbox(flex-start,center);
+                        padding: $secondary-button-padding;
+
+                        .export_icon {
+                            margin-right: 8px;
+                        }
+
+                        &:hover {
+                            cursor: pointer;
+                            background: $primary-bg-color-light;
+                            color: $secondary-text-color-light;
+                            border: 1.5px solid $secondary-bg-color-light;
+                        }
+
+                        &:hover:first-child {
+                            border-radius: $border-radius $border-radius 0 0;
+                        }
+
+                        &:hover:last-child {
+                            border-radius: 0 0 $border-radius $border-radius;
+                        }
+                    }
+                }
+            }
+
+            .button_export, .button_setting, .button_filter {
+                @extend %toolbarbutton_container;
+            }
+        }
+    }
+
+    .mainsection_table {
+        .table {
+            overflow: hidden;
+            border-radius: $border-radius;
+
+            .table_header {
+                background: $primary-bg-color-light;
+                color: $primary-title-color-light;
+
+                .header_row {
+                    height: 56px;
+
+                    .header_cell {
+                        @extend %table_cell;
+
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+
+            .table_body {
+                .body_row {
+                    color: $primary-tabletext-color-light;
+                    height: 56px;
+
+                    .body_cell, .body_actioncell {
+                        @extend %table_cell;
+                    }
+
+                    .body_cell {
+                        &:first-child {
+                            font-weight: bold;
+                        }
+                    }
+
+                    .body_actioncell {
+                        .action_icon {
+                            text-align: center;
+                        }
+                        /*                        .action_menu {
+                            display: none;
+                        }*/
+                    }
+
+                    &:nth-child(2n) {
+                        background: $secondary-tablerow-color-light;
+                    }
+
+                    &:nth-child(2n+1) {
+                        background: $primary-tablerow-color-light;
+                    }
+
+                    &:hover {
+                        cursor: pointer;
+                        background: $primary-bg-color-light;
+                        color: $secondary-text-color-light
+                    }
+                }
+            }
+        }
+
+        .table_footer {
+        }
+    }
+}

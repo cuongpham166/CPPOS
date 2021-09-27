@@ -1,0 +1,50 @@
+﻿/*@import "_menuvariables.scss";*/
+@import "_mixins.scss";
+
+@include respond-above(xs) {
+    .menu_top {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas: "logo logo" "datetime user";
+    }
+}
+
+@include respond-above(sm) {
+    .menu_top {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas: "logo logo" "datetime user";
+    }
+}
+
+@include respond-above(md) {
+    .menu_top {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas: "logo logo" "datetime user";
+    }
+}
+
+@include respond-above(lg) {
+    .menu_top {
+        grid-template-columns: 1fr 1.5fr 1fr;
+        grid-template-rows: 1fr;
+        grid-template-areas: "datetime logo user";
+    }
+}
+
+@include respond-above(xl) {
+    .menu_top {
+        grid-template-columns: 1fr 1.5fr 1fr;
+        grid-template-rows: 1fr;
+        grid-template-areas: "datetime logo user";
+    }
+}
+
+@include respond-above(xxl) {
+    .menu_top {
+        grid-template-columns: 1fr 1.5fr 1fr;
+        grid-template-rows: 1fr;
+        grid-template-areas: "datetime logo user";
+    }
+}
